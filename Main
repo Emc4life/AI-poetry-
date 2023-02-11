@@ -1,0 +1,41 @@
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var promptTextField: UITextField!
+    @IBOutlet weak var generatedPoemTextView: UITextView!
+    
+    let prompts = ["love", "nature", "solitude", "loss", "hope"]
+    let poeticDevices = ["alliteration", "assonance", "consonance", "metaphor", "simile"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Randomly select a prompt and a poetic device to use
+        let randomPromptIndex = Int.random(in: 0..<prompts.count)
+        let randomPoeticDeviceIndex = Int.random(in: 0..<poeticDevices.count)
+        
+        promptTextField.text = "\(prompts[randomPromptIndex]) + \(poeticDevices[randomPoeticDeviceIndex])"
+    }
+    
+    @IBAction func generatePoemButtonTapped(_ sender: Any) {
+        let prompt = promptTextField.text!
+        let poem = generatePoem(withPrompt: prompt)
+        generatedPoemTextView.text = poem
+    }
+    
+    func generatePoem(withPrompt prompt: String) -> String {
+        // Placeholder implementation for the AI poetry generation logic
+        return "The \(prompt) that once was bright\nIs now a distant, faded light\nBut still it shines, a gentle glow\nTo guide us on our way, we know."
+    }
+    
+    @IBAction func savePoemButtonTapped(_ sender: Any) {
+        // Placeholder implementation for saving the generated poem to a document
+        print("Poem saved!")
+    }
+    
+    @IBAction func editPoemButtonTapped(_ sender: Any) {
+        // Placeholder implementation for editing the saved poem
+        print("Poem edited!")
+    }
+}
